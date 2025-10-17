@@ -23,8 +23,32 @@ let speedy = 2;
 let y1 = -10;
 let timer=0
 
-function draw() {
-  background(255,211,214);
+let color1=0
+let color2=183
+let color3=216
+let color4=252
+let color5=244
+let color6=79
+ let transp=100
+
+function draw() {  
+  background(255,211,214,50);
+  
+  color1=map(mouseX,100,700,0,255)
+  color2=map(mouseX,100,700,183,145)
+  color3=map(mouseX,100,700,216,66)
+  color4=map(mouseX,100,700,252,77)
+  color5=map(mouseX,100,700,244,230)
+  color6=map(mouseX,100,700,79,128)
+   for(let i=0;i<800;i+=40){
+    noStroke()
+    fill(color1,color2,color3,5)
+    rect(0,0,i,1000)
+    fill(color4,color5,color6,5)
+    rect(800,0,-i,1000)
+  }
+  
+  
   rectMode(CENTER);
   
   if(timer>=0){
@@ -32,13 +56,23 @@ function draw() {
    // console.log(timer)
     
   }
-  if(timer>18){
+  if(timer>229){
     timer=0
   }
-  if(timer>=17||timer<18){
-  
+  if(timer>100){
+ push()
+   console.log(transp)
    
-    
+    translate(400,250)
+   rotate(frameCount*0.006)
+    noFill()
+    strokeWeight(23)
+    stroke(248,248,255,250)
+    rect(0,0,400,400)
+    stroke(248,248,255,250)
+    rotate(frameCount*0.02)
+    rect(0,0,400,400)
+    pop()
   }
   
   
@@ -53,10 +87,15 @@ function draw() {
     sunx += speedx;
     suny += speedy;
 
-    stroke(255, 200, 200);
+    noStroke()
     strokeWeight(8);
-    fill(255, 253, 208);
-    circle(mouseX, mouseY, 100);
+    fill(209, 243, 177);
+    if(mouseX>400){
+      fill(179,153,212)
+    }
+    line(pmouseX,pmouseY,mouseX,mouseY)
+    circle(pmouseX,pmouseY,50)
+    circle(mouseX, mouseY, 50);
 
     if (sunx < 200 || sunx > 600) {
       speedx = -speedx;
@@ -317,5 +356,7 @@ function drawcube2(speed,sunx,suny,big,color){
    rect(0,0,i,i)
  }
 }
+ 
+
 
 
